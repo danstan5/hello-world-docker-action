@@ -9,7 +9,7 @@ jobs:
     
     - name: Hello world action step
       id: hello
-      run: docker run docker://danstan5/seedlink-metadata-scripts
+      run: docker run danstan5/seedlink-metadata-scripts
     
     - name: State finished
       run: echo "This is finished"
