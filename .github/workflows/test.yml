@@ -7,9 +7,9 @@ jobs:
     
     steps:
     
-    - name: Run a docker container
-      id: hello
     - shell: bash
+      id: hello
+      name: Run a docker container on shell
       env:
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
       run: |
