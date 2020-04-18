@@ -13,9 +13,10 @@ jobs:
       env:
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
       run: |
-        docker run danstan5/seedlink-metadata-scripts \
+        docker run \
         -e full=True \
-        -e $DB_USERNAME=host
+        -e $DB_USERNAME=host \
+        danstan5/seedlink-metadata-scripts
              
     - name: State finished
       run: echo "This is finished"
