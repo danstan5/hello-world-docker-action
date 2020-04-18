@@ -10,5 +10,7 @@ outputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    DB='10000'
   args:
     - ${{ inputs.who-to-greet }}
