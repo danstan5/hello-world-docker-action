@@ -7,9 +7,11 @@ jobs:
     
     steps:
     
-    - name: Hello world action step
+    - name: Run a docker container
       id: hello
-      run: docker run danstan5/seedlink-metadata-scripts
+      run: |
+        docker run danstan5/seedlink-metadata-scripts
+        -e full=True
     
     - name: State finished
       run: echo "This is finished"
