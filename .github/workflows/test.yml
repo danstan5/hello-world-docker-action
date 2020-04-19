@@ -12,11 +12,11 @@ jobs:
         DB_USERNAME:${{ secrets.DB_USERNAME }}
         DB_PASSWORD:${{ secrets.DB_PASSWORD }}
       run: |
-        echo $DB_USERNAME
+        echo "$DB_USERNAME"
         docker run \
-        -e DB_USERNAME=$DB_USERNAME \
-        -e DB_PASSWORD=$DB_PASSWORD \
-        -e DB_HOST=$DB_HOST \
+        -e DB_USERNAME="$DB_USERNAME" \
+        -e DB_PASSWORD="$DB_PASSWORD" \
+        -e DB_HOST="$DB_HOST" \
         danstan5/seedlink-metadata-scripts
     - name: Download log data
       uses: actions/upload-artifact@v1
