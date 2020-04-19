@@ -14,6 +14,7 @@ jobs:
       run: |
         echo "$DB_USERNAME"
         docker run \
+        -e full=True \
         -e DB_USERNAME="$DB_USERNAME" \
         -e DB_PASSWORD="$DB_PASSWORD" \
         -e DB_HOST="$DB_HOST" \
