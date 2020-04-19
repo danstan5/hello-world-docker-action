@@ -4,7 +4,9 @@ jobs:
   run_docker_script:
     runs-on: ubuntu-latest
     name: Run scripts to update seedlink_metadata_db
+    
     steps:
+    
     - name: Run docker script from shell
       shell: bash
       env:
@@ -12,13 +14,13 @@ jobs:
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: |
-        echo "$DB_USERNAME"
         docker run \
         -e full=True \
-        -e DB_USERNAME="$DB_USERNAME" \
-        -e DB_PASSWORD="$DB_PASSWORD" \
-        -e DB_HOST="$DB_HOST" \
+        -e DB_USERNAME=$DB_USERNAME \
+        -e DB_PASSWORD=$DB_PASSWORD \
+        -e DB_HOST=$DB_HOST \
         danstan5/seedlink-metadata-scripts
+    
     - name: Download log data
       uses: actions/upload-artifact@v1
       with:
