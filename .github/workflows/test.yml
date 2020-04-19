@@ -18,7 +18,7 @@ jobs:
         -e DB_HOST=$DB_HOST \
         danstan5/seedlink-metadata-scripts
     - name: Download log data
-        uses: actions/upload-artifact@v1
-        with:
-          name: runtime_log
-          path: runtime.log
+      uses: actions/upload-artifact@v1
+      with:
+        name: runtime_log
+        path: runtime.log
