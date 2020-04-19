@@ -1,22 +1,24 @@
 on: [push]
 
 jobs:
-  hello_world_job:
+  run_docker_script:
     runs-on: ubuntu-latest
-    name: A job to say hello
-    
+    name: Run scripts to update seedlink_metadata_db
     steps:
-    
-    - shell: bash
-      id: hello
-      name: Run a docker container on shell
+    - name: Run docker script from shell
+      shell: bash
       env:
+        DB_HOST: ${{ secrets.DB_HOST }}
         DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       run: |
         docker run \
-        -e full=True \
-        -e $DB_USERNAME=host \
+        -e DB_USERNAME=$DB_USERNAME \
+        -e DB_PASSWORD=$DB_PASSWORD \
+        -e DB_HOST=$DB_HOST \
         danstan5/seedlink-metadata-scripts
-             
-    - name: State finished
-      run: echo "This is finished"
+    - name: Download log data
+        uses: actions/upload-artifact@v1
+        with:
+          name: runtime_log
+          path: runtime.log
